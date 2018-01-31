@@ -1129,7 +1129,7 @@ class DynaGrid extends Widget
             $this->setToggleButton(DynaGridStore::STORE_FILTER);
             $model->category = DynaGridStore::STORE_FILTER;
             $model->key = $this->_filterKey;
-            $model->data = array_filter($this->gridOptions['filterModel']->attributes);
+            $model->data = array_filter($this->gridOptions['filterModel']->attributes, function($a) {return isset($a);});
             $dynagridFilter = DynaGridDetail::widget(
                 [
                     'id' => $this->_filterModalId,
